@@ -19,11 +19,11 @@ body
 #wrapper
 {
 	width: 800px;
-	height: 800px;
+	height: 400px;
 
 	position: absolute;
 	left: calc(50% - 400px);
-	top: calc(50% - 400px);
+	top: calc(50% - 200px);
 
 	border: 1px solid #ecf0f1;
 	background-color: #ecf0f1;

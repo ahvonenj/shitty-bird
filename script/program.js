@@ -73,6 +73,8 @@ function Program()
 		var evt = data.data.originalEvent;
 		var vx = evt.clientX - Global.stageoffset.x;
 		var vy = evt.clientY - Global.stageoffset.y;
+
+		self.shird.acceleration = 2000;
 	});
 
 	this.stage.on('tap', function(data)
@@ -89,6 +91,10 @@ function Program()
     this.clickhack.endFill();   
 
     this.stage.addChild(this.clickhack);
+
+    this.shird = new Shird(this);
+    this.pipegen = new PipeGenerator(this);
+    this.pipegen.Begin(Global.pipet);
 
 
     /*********************************************************************************
@@ -108,18 +114,7 @@ Program.prototype.run = function()
 		y: $(canvas).offset().top
 	}
 
-	PixiDebugger.DebugPoint(10, 10, null, null, null, function(dt, t)
-	{
-		this.position.x += dt;
-		this.position.y += dt;
-	});
-	PixiDebugger.DebugLine(100, 100, 200, 200, null, null, null, function(dt, t)
-	{
-		this.clear();
-		this.lineStyle(3, 0xFF00FF, 1);
-		this.moveTo(100 + Math.cos(t) * 2000 * dt, 100 + Math.sin(t) * 2000 * dt)
-		this.lineTo(300 + Math.cos(t / 10) * 1000 * dt, 300 + Math.sin(t / 10) * 1000 * dt)
-	});
+	
 
 	requestAnimationFrame(function(t) { self.animate(self); });
 }
@@ -155,6 +150,8 @@ Program.prototype.update = function(dt, t)
 {
 	Lerppu.update(t);
 	PixiDebugger.UpdateDebugState(dt, t);
+	this.shird.update(dt, t);
+	this.pipegen.update(dt, t);
 }
 
 Program.prototype.render = function()
