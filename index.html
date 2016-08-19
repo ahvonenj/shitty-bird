@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Project title</title>
+		<meta charset="UTF-8">
+
+		<!-- STYLE -->
+		<link rel = "stylesheet" type = "text/css" href = "style/index.css">
+
+		
+		<!-- LIB -->
+		<script src = "lib/jquery-3.1.0.min.js"></script>
+		<script src = "lib/pixi.min.js"></script>
+		<script src = "lib/chance.min.js"></script>
+		<script src = "lib/vectorious-4.3.2.min.js"></script>
+		<script src = "lib/stats.min.js"></script>
+		<script src = "lib/lerppu.js"></script>
+		<script src = "lib/pixi-debugger.js"></script>
+
+		<script src = "lib/js-utility.js"></script>
+		<script src = "script/class/time.js"></script>
+		<script src = "script/class/global.js"></script>
+
+
+		<!-- SCRIPT -->
+		<script src = "script/program.js"></script>
+	</head>
+	<body>
+		<div id = "wrapper">
+			<canvas id = "canvas"></canvas>
+		</div>
+	</body>
+	<script>
+		var program = null;
+
+		$(document).ready(function()
+		{
+			program = new Program();
+			program.run();
+		})
+	</script>
+</html>
